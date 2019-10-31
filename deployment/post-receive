@@ -1,0 +1,15 @@
+#!/bin/bash
+while read oldrev newrev ref
+do
+        if [[ $ref =~ .*/master$ ]];
+        then
+                echo "Master ref received.  Deploying master branch to production..."
+                git --work-tree=/kunden/homepages/42/d555332537/htdocs/metrics-production --git-dir=/kunden/homepages/42/d555332537/htdocs/gitrepos checkout -f master
+        elif [[ $ref =~ .*/staging$ ]];
+        then
+                echo "Staging ref received.  Deploying staging branch to staging..."
+                git --work-tree=/kunden/homepages/42/d555332537/htdocs/metrics-dev --git-dir=/kunden/homepages/42/d555332537/htdocs/gitrepos checkout -f staging
+        else
+                echo "Ref $ref successfully received.  Doing nothing: only the prod branch may be deployed on this server."
+        fi
+done

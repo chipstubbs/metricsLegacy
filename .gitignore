@@ -1,0 +1,27 @@
+# Blacklist files/folders in same directory as the .gitignore file
+/*
+
+# Whitelist some files
+!.gitignore
+!.htaccess
+!README.md
+!index.php
+
+# Ignore all files named .DS_Store or ending with .log
+**/.DS_Store
+**.log
+
+# Whitelist folder/a/b1/ and folder/a/b2/
+# trailing "/" is optional for folders, may match file though.
+# "/" is NOT optional when followed by a *
+!application/
+#application/config/database.php
+#application/config/config.php
+application/logs/
+!assets
+!install
+!sparks
+!system
+!tools
+!dompdf
+!deployment
